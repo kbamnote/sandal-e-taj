@@ -126,6 +126,7 @@ img{max-width:100%;display:block}a{color:inherit}
 .foot .c{font-size:.82rem}.foot .c b{color:#fff;font-family:"Cinzel",serif;letter-spacing:.05em;font-size:.9rem}
 .foot .partner b{color:var(--gold-1)}.foot .copy{font-size:.74rem;color:#b9966a;margin-top:6px}.foot a{color:var(--gold-1);text-decoration:none}
 .foot .adminlink{font-size:.66rem;color:#7a5a3e;margin-top:10px}
+.foot-logo{display:block;width:clamp(110px,16vw,160px);height:auto;margin:0 auto 18px}
 .lb{position:fixed;inset:0;background:rgba(30,8,16,.92);display:none;place-items:center;z-index:90;padding:18px}
 .lb.on{display:grid}.lb img{max-width:96vw;max-height:92vh;border-radius:6px}
 .lb .x{position:absolute;top:14px;right:18px;color:var(--gold-1);font-size:2rem;cursor:pointer;line-height:1}
@@ -137,14 +138,91 @@ img{max-width:100%;display:block}a{color:inherit}
  .book-wrap img{margin:0 auto}.donate-qr,#qrbox{margin:0 auto}.share-actions{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* === Dawat Nama: royal sealed scroll === */
+.scroll-wrap{max-width:720px;margin:0 auto}
+.scroll{position:relative;filter:drop-shadow(0 22px 44px rgba(90,11,34,.4))}
+.scroll-cap{position:relative;z-index:3;height:34px;border-radius:9px;background:linear-gradient(180deg,#8a1d3a,#5a0b22 55%,#3d0716);border:2px solid var(--gold-2);box-shadow:inset 0 2px 4px rgba(255,255,255,.15),inset 0 -3px 6px rgba(0,0,0,.45)}
+.scroll-cap::before{content:"";position:absolute;left:10px;right:10px;top:50%;transform:translateY(-50%);height:9px;border-radius:6px;background:linear-gradient(180deg,var(--gold-1),var(--gold-2));box-shadow:0 0 6px rgba(201,162,75,.5)}
+.scroll-cap.top{margin-bottom:-7px}
+.scroll-cap.bottom{margin-top:-7px}
+.scroll-sheet{position:relative;z-index:2;overflow:hidden;max-height:3000px;transition:max-height 1.7s ease-in-out;border-left:2px solid var(--gold-2);border-right:2px solid var(--gold-2);background:repeating-linear-gradient(0deg,rgba(120,80,20,.03) 0 2px,transparent 2px 27px),radial-gradient(circle at 16% 6%,rgba(201,162,75,.16),transparent 34%),radial-gradient(circle at 86% 94%,rgba(122,22,49,.09),transparent 40%),linear-gradient(180deg,#fbf3dd,#f0e1bb)}
+.scroll-sheet::before,.scroll-sheet::after{content:"";position:absolute;left:0;right:0;height:16px;z-index:4;pointer-events:none}
+.scroll-sheet::before{top:0;background:linear-gradient(180deg,rgba(61,7,22,.22),transparent)}
+.scroll-sheet::after{bottom:0;background:linear-gradient(0deg,rgba(61,7,22,.22),transparent)}
+.scroll.closed .scroll-sheet{max-height:150px}
+.invite-inner{padding:32px 34px 22px;opacity:1;transition:opacity .9s ease .35s}
+.scroll.closed .invite-inner{opacity:0;transition:opacity .25s ease}
+.scroll-sheet .invite{background:transparent;border:0;box-shadow:none;padding:0;max-width:none;margin:0}
+.scroll-sheet .invite::before{display:none}
+.scroll-close{display:block;margin:20px auto 0;background:none;border:1px solid var(--gold-2);color:var(--wine);font-family:"Cinzel",serif;letter-spacing:.08em;font-size:.64rem;text-transform:uppercase;padding:7px 18px;border-radius:999px;cursor:pointer}
+.scroll-close:hover{background:rgba(201,162,75,.16)}
+.scroll-seal{display:none}
+.scroll.closed .scroll-seal{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:none;border:0;cursor:pointer}
+.scroll-seal .wax{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:2rem;color:#f3dca0;background:radial-gradient(circle at 38% 30%,#bb3350,#6e0f28 72%);border:3px solid var(--gold);box-shadow:0 7px 16px rgba(0,0,0,.45),inset 0 2px 5px rgba(255,255,255,.3);animation:waxpulse 2.6s ease-in-out infinite}
+@keyframes waxpulse{0%,100%{box-shadow:0 7px 16px rgba(0,0,0,.45),inset 0 2px 5px rgba(255,255,255,.3),0 0 0 0 rgba(201,162,75,.45)}50%{box-shadow:0 7px 16px rgba(0,0,0,.45),inset 0 2px 5px rgba(255,255,255,.3),0 0 0 12px rgba(201,162,75,0)}}
+.scroll-seal .seal-label{font-family:"Amiri",serif;color:var(--wine);font-size:1.25rem;text-align:center;line-height:1.25;background:rgba(251,243,221,.94);border:1px solid var(--gold-2);border-radius:12px;padding:7px 18px;box-shadow:0 4px 12px rgba(90,11,34,.25)}
+.scroll-seal .seal-label span{display:block;font-family:"Mukta",sans-serif;font-size:.72rem;color:var(--wine-3);letter-spacing:.04em;margin-top:3px}
+.ribbon-strip{display:none}
+.scroll.closed .ribbon-strip{display:block;position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:48px;z-index:4;background:linear-gradient(90deg,#5a0b22,#a8294a 50%,#5a0b22);border-left:1px solid var(--gold-2);border-right:1px solid var(--gold-2);box-shadow:0 0 12px rgba(0,0,0,.35)}
+/* === Gallery videos === */
+.vgal-h{text-align:center;font-family:"Amiri",serif;color:var(--wine);font-size:1.5rem;margin:34px 0 16px}
+.vgal{display:grid;gap:14px;max-width:960px;margin:0 auto}
+.vgal-wide{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.vgal-wide .vcell{aspect-ratio:16/9}
+.vgal-short{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-top:14px}
+.vgal-short .vcell{aspect-ratio:9/16}
+.vcell{border:1px solid var(--gold);border-radius:10px;overflow:hidden;background:#000;box-shadow:0 10px 26px -20px rgba(90,11,34,.5)}
+.vcell iframe{width:100%;height:100%;display:block;border:0}
+/* === Tapify logo === */
+.tapify-logo{display:block;width:clamp(150px,28vw,220px);height:auto;margin:14px auto 6px;position:relative;z-index:1}
+/* === Inline PDF (Patrika) === */
+.book-intro{max-width:680px;margin:0 auto 22px;text-align:center;color:var(--ink-soft);font-size:.98rem}
+.pdf-viewer{max-width:840px;margin:0 auto;border:2px solid var(--gold-2);border-radius:12px;overflow:hidden;box-shadow:0 16px 44px -22px rgba(90,11,34,.5);background:#fff}
+.pdf-viewer iframe{display:block;width:100%;height:82vh;min-height:520px;border:0}
+.pdf-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.pdf-actions .btn-ghost{border-color:var(--wine);color:var(--wine)}
+.pdf-actions .btn-ghost:hover{background:rgba(90,11,34,.08)}
+@media(max-width:760px){.pdf-viewer iframe{height:72vh;min-height:420px}}
+/* === Well-wisher marquees === */
+.marquee-band{padding:34px 0;background:var(--ivory-2);overflow:hidden}
+.marquee{overflow:hidden;width:100%;margin:9px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.mq-track{display:flex;gap:14px;width:max-content;will-change:transform}
+.marquee[data-dir="left"] .mq-track{animation:mqleft 22s linear infinite}
+.marquee[data-dir="right"] .mq-track{animation:mqright 22s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes mqleft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mqright{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.mq-track img{height:clamp(150px,20vw,210px);width:auto;display:block;border-radius:10px;border:1px solid var(--gold-2);background:#fff;flex:0 0 auto}
+@media(max-width:760px){.mq-track img{height:clamp(120px,34vw,160px)}}
+/* === Schedule banner === */
+.mainline-band{background:linear-gradient(180deg,var(--wine),var(--wine-2));padding:30px 0;border-top:2px solid var(--gold-2);border-bottom:2px solid var(--gold-2)}
+.mainline-img{display:block;width:100%;max-width:900px;height:auto;margin:0 auto;border-radius:12px}
+/* === Dates: image beside content === */
+.dcell{display:flex;align-items:center;gap:16px;text-align:left}
+.dcell-img{flex:0 0 auto;width:clamp(96px,32%,150px);aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--gold-2)}
+.dcell-txt{flex:1 1 auto}
+/* === Committee member cutouts (no bg / circle / border) === */
+.mcard.cut{background:none;border:0;box-shadow:none;padding:4px}
+.mcard.cut img{width:auto;max-width:100%;height:clamp(170px,23vw,250px);border:0;border-radius:0;object-fit:contain;background:none;margin:0 auto}
+.mcard.cut .nm,.mcard.cut .rl{display:none}
+/* === Committee section flanking cutouts === */
+.committee-flank{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;max-width:760px;margin:0 auto}
+.cf-img{flex:0 0 auto;width:clamp(140px,22vw,280px);height:auto;display:block;align-self:flex-end}
+@media(max-width:760px){
+ .cf-img{width:clamp(110px,40vw,180px)}
+}
 /* === Hero: video background + corner people + countdown === */
 .hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;padding:34px 0;background:#160410}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hero-veil{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 95% at 50% 38%,transparent 30%,rgba(18,3,11,.55) 80%),linear-gradient(180deg,rgba(18,3,11,.45),rgba(18,3,11,.12) 38%,rgba(18,3,11,.7))}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:1080px;padding:0 20px;display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;justify-items:center}
-.person{margin:0;display:flex;flex-direction:column;align-items:center}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1080px;padding:0 20px;display:grid;place-items:center}
+.person{position:absolute;bottom:0;z-index:3;margin:0;line-height:0}
+.person-left{left:0}
+.person-right{right:0}
+.person-center{left:50%;transform:translateX(-50%)}
 .person-img{width:clamp(130px,18vw,240px);height:auto;display:block}
-.countdown-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.center-img{width:clamp(240px,38vw,460px);height:auto;display:block}
+.countdown-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;transform:translateY(-16vh)}
 .cd-badge{width:138px;height:138px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:"Cinzel",serif;text-transform:uppercase;letter-spacing:.14em;font-size:.9rem;font-weight:600;color:var(--gold-1);line-height:1.35;background:radial-gradient(circle at 50% 32%,var(--wine-3),var(--wine-2));border:3px solid var(--gold);box-shadow:0 0 0 6px rgba(201,162,75,.16),0 14px 32px -14px rgba(0,0,0,.7);animation:cdpulse 2.6s ease-in-out infinite}
 @keyframes cdpulse{0%,100%{box-shadow:0 0 0 6px rgba(201,162,75,.16),0 14px 32px -14px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 13px rgba(201,162,75,.04),0 16px 36px -12px rgba(0,0,0,.8)}}
 .cd-timer{display:flex;gap:10px}
@@ -155,10 +233,9 @@ img{max-width:100%;display:block}a{color:inherit}
 .cd-done{font-family:"Amiri",serif;font-size:1.5rem;color:var(--gold-1);text-align:center}
 .hero .hero-cta{margin-top:4px}
 @media(max-width:760px){
- .hero{min-height:auto;padding:20px 0 28px}
- .hero-inner{grid-template-columns:1fr 1fr;gap:14px}
- .person-left{order:1}.person-right{order:2}
- .countdown-wrap{order:3;grid-column:1/-1;margin-top:10px}
+ .hero{min-height:80vh;padding:20px 0}
+ .person-img{width:clamp(72px,24vw,120px)}
+ .center-img{width:clamp(150px,44vw,260px)}
  .cd-badge{width:120px;height:120px;font-size:.78rem}
  .cd-timer{gap:7px}
  .cd-unit{min-width:54px;padding:9px 6px}
@@ -175,13 +252,19 @@ img{max-width:100%;display:block}a{color:inherit}
     <source src="Assets/Main_Screen.mp4" type="video/mp4">
   </video>
   <div class="hero-veil"></div>
-  <div class="hero-inner">
-    <figure class="person person-left">
-      <img class="person-img" src="Assets/Comete/Chota%20Amjad.png" alt="Chota Amjad Khan">
-    </figure>
 
+  <figure class="person person-left">
+    <img class="person-img" src="Assets/Comete/Chota%20Amjad.png" alt="Chota Amjad Khan">
+  </figure>
+  <figure class="person person-right">
+    <img class="person-img" src="Assets/Comete/Arif.png" alt="Arif Khan">
+  </figure>
+  <figure class="person person-center">
+    <img class="center-img" src="Assets/Comete/Center.png" alt="नवजवान संदल कमेटी एवं लॉयन्स ऑफ ताज ग्रुप">
+  </figure>
+
+  <div class="hero-inner">
     <div class="countdown-wrap">
-      <div class="cd-badge">Coming<br>Soon</div>
       <div class="cd-timer" id="countdown">
         <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-lab">दिन</span></div>
         <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-lab">घंटे</span></div>
@@ -190,10 +273,6 @@ img{max-width:100%;display:block}a{color:inherit}
       </div>
       <div class="cd-date">सनीचर · 11 जुलाई 2026</div>
     </div>
-
-    <figure class="person person-right">
-      <img class="person-img" src="Assets/Comete/Arif.png" alt="Arif Khan">
-    </figure>
   </div>
 </header>
 
@@ -201,7 +280,23 @@ img{max-width:100%;display:block}a{color:inherit}
 
 <section class="section" id="dawat-sec"><div class="wrap">
   <div class="sec-head"><div class="sec-eyebrow">Dawat Nama</div><h2 class="sec-title">दावत नामा</h2><div class="rule"></div></div>
-  <div class="invite" id="invite"></div>
+  <div class="scroll-wrap">
+    <div class="scroll closed" id="scroll">
+      <div class="scroll-cap top"></div>
+      <div class="scroll-sheet">
+        <div class="invite-inner">
+          <div class="invite" id="invite"></div>
+          <button class="scroll-close" onclick="toggleScroll()">▲ बंद करें</button>
+        </div>
+      </div>
+      <div class="scroll-cap bottom"></div>
+      <span class="ribbon-strip"></span>
+      <button class="scroll-seal" onclick="toggleScroll()" aria-label="दावत नामा खोलें">
+        <span class="wax">☪</span>
+        <span class="seal-label">दावत नामा<span>मुहर दबाकर खोलें</span></span>
+      </button>
+    </div>
+  </div>
 </div></section>
 
 <section class="section" id="schedule" style="background:var(--ivory-2)"><div class="wrap">
@@ -210,22 +305,35 @@ img{max-width:100%;display:block}a{color:inherit}
   <p style="text-align:center;margin-top:22px;color:var(--ink-soft);font-size:.9rem" id="schedNote"></p>
 </div></section>
 
+<section class="section mainline-band">
+  <div class="wrap"><img class="mainline-img" src="Assets/main%20line%201.png" alt="मुख्य पदाधिकारी"></div>
+</section>
+
 <section class="section people-band" id="committee"><div class="wrap">
   <div class="sec-head"><div class="sec-eyebrow">Karyakarni</div><h2 class="sec-title">कमेटी कार्यकारणी</h2><div class="rule"></div></div>
-  <div class="lead2" id="leaders2"></div>
+  <div class="committee-flank">
+    <img class="cf-img" src="Assets/Comete/Chota%20Amjad.png" alt="Chota Amjad Khan">
+    <img class="cf-img" src="Assets/Comete/Arif.png" alt="Arif Khan">
+  </div>
   <div class="mgrid" id="members"></div>
   <div class="patrons"><div class="sub-h">— मान्यवर · Patrons —</div><div class="pgrid" id="patrons"></div></div>
 </div></section>
 
+<section class="marquee-band" id="wishers">
+  <div class="marquee" data-dir="left" id="mq1"><div class="mq-track"></div></div>
+  <div class="marquee" data-dir="right" id="mq2"><div class="mq-track"></div></div>
+  <div class="marquee" data-dir="left" id="mq3"><div class="mq-track"></div></div>
+</section>
+
 <section class="section book-band" id="book"><div class="wrap">
   <div class="sec-head"><div class="sec-eyebrow">Digital Patrika</div><h2 class="sec-title">संदल शरीफ पत्रिका 2026</h2><div class="rule"></div></div>
-  <div class="book-wrap">
-    <img id="bookCover" onclick="openLB(this.src)" alt="Patrika cover">
-    <div class="book-txt">
-      <h3>पूरी पत्रिका डाउनलोड करें</h3>
-      <p>दावत नामा, कार्यकारणी और तमाम शुभेच्छुकों के विज्ञापन — एक PDF में। डाउनलोड करके आराम से देखें या शेयर करें।</p>
-      <a class="btn btn-gold" id="bookBtn2" target="_blank">⬇︎ Download Patrika PDF</a>
-    </div>
+  <p class="book-intro">दावत नामा, कार्यकारणी और तमाम शुभेच्छुकों के विज्ञापन — पूरी पत्रिका यहीं पढ़ें। चाहें तो नीचे से डाउनलोड भी कर सकते हैं।</p>
+  <div class="pdf-viewer">
+    <iframe src="31st%20Year/Sandal-e-Taj-Patrika-2026.pdf#view=FitH" title="संदल शरीफ पत्रिका 2026" loading="lazy"></iframe>
+  </div>
+  <div class="pdf-actions">
+    <a class="btn btn-gold" href="31st%20Year/Sandal-e-Taj-Patrika-2026.pdf" target="_blank" rel="noopener">📖 नई विंडो में खोलें</a>
+    <a class="btn btn-ghost" href="31st%20Year/Sandal-e-Taj-Patrika-2026.pdf" download>⬇︎ Download PDF</a>
   </div>
 </div></section>
 
@@ -237,6 +345,9 @@ img{max-width:100%;display:block}a{color:inherit}
 <section class="section" id="gallery-sec" style="background:var(--ivory-2)"><div class="wrap">
   <div class="sec-head"><div class="sec-eyebrow">Gallery · गैलरी</div><h2 class="sec-title">तस्वीरें</h2><div class="rule"></div></div>
   <div class="gal" id="gallery"></div>
+  <h3 class="vgal-h">वीडियो · Videos</h3>
+  <div class="vgal vgal-wide" id="videoGalleryWide"></div>
+  <div class="vgal vgal-short" id="videoGalleryShort"></div>
 </div></section>
 
 <section class="section share-band" id="share"><div class="wrap">
@@ -247,24 +358,22 @@ img{max-width:100%;display:block}a{color:inherit}
       <h3>QR स्कैन करो, सब कुछ खोलो</h3>
       <p>यह QR इसी पेज का लिंक खोलता है। पोस्टर, WhatsApp या स्टेटस पर शेयर करें।</p>
       <div class="share-actions">
-        <button class="mini solid" onclick="shareLink()">Share</button>
-        <button class="mini" onclick="copyLink()" id="copyBtn">Copy Link</button>
         <a class="mini" id="waShare" target="_blank">WhatsApp</a>
       </div>
-      <div class="urlrow"><input id="customUrl" placeholder="Hosting के बाद live URL paste करें"><button class="mini solid" onclick="makeQR()">QR बनाओ</button></div>
-      <a id="dlqr" class="mini" download="sandal-e-taj-qr.png">⬇︎ QR Download</a>
     </div>
   </div>
 </div></section>
 
 <section class="tapify"><div class="wrap"><div class="tcard">
   <div class="badge">Digital Partner</div>
+  <img class="tapify-logo" src="Assets/tapify-logo-green.png" alt="Tapify">
   <h3>यह डिजिटल इन्विटेशन <span class="tname" id="tName">Tapify</span> ने बनाया</h3>
   <p>अपने event, business या dargah committee के लिए ऐसा ही live digital invite, QR और NFC card चाहिए? Tapify से बनवाएँ।</p>
   <a class="btn btn-gold" id="tapifyCta" target="_blank">Tapify से बात करें →</a>
 </div></div></section>
 
 <footer class="foot"><div class="wrap">
+  <img class="foot-logo" src="Assets/logo.png" alt="Mr Print World">
   <div class="credit" id="footCredit"></div>
   <div class="copy" id="footCopy"></div>
   <div class="adminlink"><a href="admin.html">⚙ Admin</a></div>
@@ -290,23 +399,30 @@ function render(){
  $('ribbon').innerHTML='شہنشاہِ ہفت اقلیم · <b>Hazrat Sayyed Mohammed Baba Tajuddin Auliya (R.A)</b> · Nagpur';
  const L=DATA.leaders||[];
  const ev=DATA.event||{};
- $('dates').innerHTML=`<div class="dcell"><div class="k">Sandal Sharif ki Chadar</div><div class="v">${esc(ev.sandalDate)}</div><div class="d">${esc(ev.sandalTime)}</div></div>
-  <div class="dcell green"><div class="k">लंगर महाप्रसाद</div><div class="v">${esc(ev.langarDates)}</div><div class="d">${esc(ev.langarTime)}</div></div>`;
+ $('dates').innerHTML=`<div class="dcell"><img class="dcell-img" src="Assets/chadar.jpg" alt="Sandal Sharif ki Chadar"><div class="dcell-txt"><div class="k">Sandal Sharif ki Chadar</div><div class="v">${esc(ev.sandalDate)}</div><div class="d">${esc(ev.sandalTime)}</div></div></div>
+  <div class="dcell green"><img class="dcell-img" src="Assets/langarImage.avif" alt="Langar Mahaprasad"><div class="dcell-txt"><div class="k">लंगर महाप्रसाद</div><div class="v">${esc(ev.langarDates)}</div><div class="d">${esc(ev.langarTime)}</div></div></div>`;
  let inv='<p class="lead">बिस्मिल्लाहिर्रहमानिर्रहीम</p>';
  (DATA.dawat||[]).forEach(p=>inv+=`<p>${p}</p>`);
  if(DATA.dawatHighlight) inv+=`<p class="hl">${DATA.dawatHighlight}</p>`;
  inv+=`<p class="sign">— ${esc(h.org)}</p>`; $('invite').innerHTML=inv;
  $('timeline').innerHTML=(DATA.schedule||[]).map(s=>`<div class="tl ${s.hl?'hl':''}"><div class="dot"></div><div><div class="when">${esc(s.when)}</div><div class="what">${esc(s.what)}</div><div class="meta">${esc(s.meta)}</div></div></div>`).join('');
  $('schedNote').innerHTML=DATA.scheduleNote||'';
- $('leaders2').innerHTML=L.map(p=>`<div class="lead-card"><img src="${p.photo}" alt="${esc(p.name)}"><div class="nm">${esc(p.name)}</div><div class="rl">${esc(p.role)}</div><div class="sub">${esc(p.sub)}</div></div>`).join('');
- $('members').innerHTML=(DATA.committee||[]).map(m=>`<div class="mcard"><img src="${m.photo}" alt="${esc(m.name)}"><div class="nm">${esc(m.name)}</div><div class="rl">${esc(m.role)}</div></div>`).join('');
+ const COMETE={
+  'अमजद खान (बडा)':'Assets/Comete/bada%20amjad.png',
+  'आबीद खान (गोलु)':'Assets/Comete/Golu.png',
+  'ताज खान पठान':'Assets/Comete/Taj.png',
+  'अतुल ढबाले':'Assets/Comete/Atul.png',
+  'सोहेल खान':'Assets/Comete/Sohel.png',
+  'शेख इमरान':'Assets/Comete/Shekh%20imran.png',
+  'सैयद नातिश':'Assets/Comete/Natish.png',
+  'इमरान पठान':'Assets/Comete/Imrann.png'
+ };
+ $('members').innerHTML=(DATA.committee||[]).map(m=>{const cut=COMETE[(m.name||'').trim()];return `<div class="mcard${cut?' cut':''}"><img src="${cut||m.photo}" alt="${esc(m.name)}"><div class="nm">${esc(m.name)}</div><div class="rl">${esc(m.role)}</div></div>`;}).join('');
  $('patrons').innerHTML=(DATA.patrons||[]).map(p=>`<div class="pcell"><div class="nm">${esc(p.name)}</div><div class="rl">${esc(p.role)}</div></div>`).join('');
- const bk=DATA.book||{}; $('bookCover').src=bk.cover||'';
- $('bookBtn2').href=bk.pdf||'#';
  renderDonation();
  $('gallery').innerHTML=(DATA.gallery||[]).map(g=>`<figure class="gcell"><img src="${g.img}" onclick="openLB(this.src)" alt="${esc(g.caption)}"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('') || '<p class="placeholder" style="grid-column:1/-1">अभी तस्वीरें नहीं — admin से जोड़ें।</p>';
  const tp=DATA.tapify||{}; $('tName').textContent=tp.label||'Tapify';
- $('tapifyCta').href="https://wa.me/"+(tp.waNumber||'')+"?text="+encodeURIComponent(tp.text||'');
+ $('tapifyCta').href="https://wa.me/917841840840?text="+encodeURIComponent(tp.text||'Tapify se digital invite, QR aur NFC card banwana hai.');
  const f=DATA.footer||{};
  $('footCredit').innerHTML=`<div class="c">Printing By <b>${esc(f.printBy)}</b><br><a href="tel:${esc(f.printPhone)}">${esc(f.printPhone)}</a></div>
    <div class="c partner">Digital Partner <b>${esc(tp.label||'Tapify')}</b></div>
@@ -318,15 +434,9 @@ function renderDonation(){
  const d=DATA.donation||{}; const box=$('donateWrap');
  $('donHeading').textContent=d.heading||'नज़राना / Donation';
  if(!d.enabled){box.innerHTML='<p class="placeholder" style="grid-column:1/-1">Donation बंद है।</p>';return;}
- let qrHtml='';
- if(d.qrImg){qrHtml=`<div class="donate-qr"><img src="${d.qrImg}" alt="Donation QR"></div>`;}
- else if(d.upiId){qrHtml=`<div class="donate-qr" id="upiqr"></div>`;}
- else {qrHtml=`<div class="placeholder">QR अभी सेट नहीं —<br>admin से UPI ID या QR image जोड़ें।</div>`;}
+ const qrSrc=d.qrImg||'Assets/Donation%20QR.png';
+ const qrHtml=`<div class="donate-qr"><img src="${qrSrc}" alt="Donation QR"></div>`;
  box.innerHTML=`${qrHtml}<div class="donate-txt"><p>${esc(d.note)}</p>${d.upiId?`<p class="upi">UPI: ${esc(d.upiId)}</p>`:''}${d.payeeName?`<p style="font-size:.85rem;color:#9fc7ba">${esc(d.payeeName)}</p>`:''}</div>`;
- if(!d.qrImg && d.upiId){
-   const link="upi://pay?pa="+encodeURIComponent(d.upiId)+"&pn="+encodeURIComponent(d.payeeName||'Donation')+"&cu=INR";
-   new QRCode($('upiqr'),{text:link,width:180,height:180,colorDark:"#0c2b2b",colorLight:"#ffffff"});
- }
 }
 
 render();
@@ -337,6 +447,55 @@ $('waShare').href="https://wa.me/?text="+encodeURIComponent("📿 104वां �
 function copyLink(){navigator.clipboard.writeText(pageUrl).then(()=>{const b=$('copyBtn');b.textContent="Copied ✓";setTimeout(()=>b.textContent="Copy Link",1600);});}
 function shareLink(){if(navigator.share)navigator.share({title:"Sandal-e-Taj · 104th Urs Mubarak 2026",text:"104वां सालाना उर्स मुबारक",url:pageUrl});else copyLink();}
 function makeQR(){var u=$('customUrl').value.trim()||pageUrl;var t=document.createElement('div');new QRCode(t,{text:u,width:600,height:600,colorDark:"#5a0b22",colorLight:"#ffffff"});setTimeout(()=>{var c=t.querySelector('canvas');var data=c?c.toDataURL("image/png"):t.querySelector('img').src;var a=$('dlqr');a.href=data;a.style.display="inline-block";a.textContent="⬇︎ QR Download (600px)";},300);}
+
+/* Gallery videos (YouTube + Shorts) */
+(function(){
+ var wide=['IdvMBOiFs1w','RQggzeaiHds'];
+ var shorts=['1hdU6byZAUg','eMRMSEj099U','cMoZ9uGqJ5E','inAGUWgjr98','mJdJcXUieKk'];
+ function frame(id){return '<div class="vcell"><iframe loading="lazy" src="https://www.youtube.com/embed/'+id+'" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';}
+ var w=document.getElementById('videoGalleryWide'); if(w) w.innerHTML=wide.map(frame).join('');
+ var s=document.getElementById('videoGalleryShort'); if(s) s.innerHTML=shorts.map(frame).join('');
+})();
+
+/* Well-wisher marquees */
+(function(){
+ var base='Assets/Small Size Crousal Line ';
+ var lines={
+  mq1:{folder:'1st',files:['Angad Hironde.png','Babbu Bhai Kalamna.png','Haji Altaf.png','Pankaj Chauhan.png','Raja Khan.png','Raja Nagrale.png','Ravi Umate.png','Sunil.png','bharat.png','kapil patil.png','kokne.png','mohammad warsi.png','sandeep mane.png']},
+  mq2:{folder:'2nd',files:['Badshash.png','Haji Hameed.png','Jon sheikh.png','Kasam Bhai.png','Mansur.png','azad kureshi.png','mohammad waseem.png','nazim pahelwan.png','pappu rehan.png','sheikh sharukh.png','shoyev.png','sk nizam.png','wasim bhai.png']},
+  mq3:{folder:'3rd',files:['Hafiz.png','Irshad sheikh.png','Pappu.png','Ranjit Baba.png','Vinod Kaka.png','anil chana purkar.png','asif sheikh.png','faizan pathan.png','kayyum.png','satish sahu.png','sk firoz.png','sohail vicky.png','zubair.png']}
+ };
+ Object.keys(lines).forEach(function(id){
+   var el=document.getElementById(id); if(!el) return;
+   var track=el.querySelector('.mq-track'); var L=lines[id];
+   var html=L.files.map(function(f){return '<img loading="lazy" alt="" src="'+encodeURI(base+L.folder+'/'+f)+'">';}).join('');
+   track.innerHTML=html+html;
+ });
+})();
+
+/* Dawat Nama scroll open/close — smooth height animation */
+function toggleScroll(){
+  var s=$('scroll'); if(!s) return;
+  var sheet=s.querySelector('.scroll-sheet'); if(!sheet) return;
+  if(s.classList.contains('closed')){
+    sheet.style.maxHeight='150px';
+    s.classList.remove('closed');
+    void sheet.offsetHeight;
+    sheet.style.maxHeight=sheet.scrollHeight+'px';
+    var onOpen=function(e){ if(e.target!==sheet||e.propertyName!=='max-height')return;
+      if(!s.classList.contains('closed')) sheet.style.maxHeight='none';
+      sheet.removeEventListener('transitionend',onOpen); };
+    sheet.addEventListener('transitionend',onOpen);
+  } else {
+    sheet.style.maxHeight=sheet.scrollHeight+'px';
+    void sheet.offsetHeight;
+    sheet.style.maxHeight='150px';
+    var onClose=function(e){ if(e.target!==sheet||e.propertyName!=='max-height')return;
+      s.classList.add('closed'); sheet.style.maxHeight='';
+      sheet.removeEventListener('transitionend',onClose); };
+    sheet.addEventListener('transitionend',onClose);
+  }
+}
 
 /* Countdown to Sandal Sharif — Saturday 11 July 2026 (IST) */
 (function(){
