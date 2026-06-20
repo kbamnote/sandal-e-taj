@@ -126,7 +126,6 @@ img{max-width:100%;display:block}a{color:inherit}
 .foot .c{font-size:.82rem}.foot .c b{color:#fff;font-family:"Cinzel",serif;letter-spacing:.05em;font-size:.9rem}
 .foot .partner b{color:var(--gold-1)}.foot .copy{font-size:.74rem;color:#b9966a;margin-top:6px}.foot a{color:var(--gold-1);text-decoration:none}
 .foot .adminlink{font-size:.66rem;color:#7a5a3e;margin-top:10px}
-.foot-logo{display:block;width:clamp(110px,16vw,160px);height:auto;margin:0 auto 18px}
 .lb{position:fixed;inset:0;background:rgba(30,8,16,.92);display:none;place-items:center;z-index:90;padding:18px}
 .lb.on{display:grid}.lb img{max-width:96vw;max-height:92vh;border-radius:6px}
 .lb .x{position:absolute;top:14px;right:18px;color:var(--gold-1);font-size:2rem;cursor:pointer;line-height:1}
@@ -173,6 +172,15 @@ img{max-width:100%;display:block}a{color:inherit}
 .vgal-short .vcell{aspect-ratio:9/16}
 .vcell{border:1px solid var(--gold);border-radius:10px;overflow:hidden;background:#000;box-shadow:0 10px 26px -20px rgba(90,11,34,.5)}
 .vcell iframe{width:100%;height:100%;display:block;border:0}
+/* === Tapify footer logo === */
+.tapify-foot-logo{display:inline-block;width:clamp(90px,13vw,125px);height:auto;margin:6px 0;vertical-align:middle}
+/* === Print World footer logo === */
+.printworld-logo{display:inline-block;width:clamp(120px,18vw,170px);height:auto;margin:6px 0;vertical-align:middle}
+/* === Floating call button === */
+.call-fab{position:fixed;right:18px;bottom:18px;z-index:85;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,var(--gold-1),var(--gold));box-shadow:0 8px 20px rgba(0,0,0,.4);text-decoration:none;opacity:0;visibility:hidden;transform:translateY(24px) scale(.7);transition:opacity .35s ease,transform .35s ease,visibility .35s;animation:fabpulse 2s ease-in-out infinite}
+.call-fab.show{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.call-fab svg{width:28px;height:28px;fill:var(--wine-2)}
+@keyframes fabpulse{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 0 0 rgba(201,162,75,.55)}50%{box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 0 14px rgba(201,162,75,0)}}
 /* === Tapify logo === */
 .tapify-logo{display:block;width:clamp(150px,28vw,220px);height:auto;margin:14px auto 6px;position:relative;z-index:1}
 /* === Inline PDF (Patrika) === */
@@ -184,7 +192,7 @@ img{max-width:100%;display:block}a{color:inherit}
 .pdf-actions .btn-ghost:hover{background:rgba(90,11,34,.08)}
 @media(max-width:760px){.pdf-viewer iframe{height:72vh;min-height:420px}}
 /* === Well-wisher marquees === */
-.marquee-band{padding:34px 0;background:var(--ivory-2);overflow:hidden}
+.marquee-band{padding:34px 0;background:linear-gradient(180deg,var(--wine-2),var(--wine));overflow:hidden}
 .marquee{overflow:hidden;width:100%;margin:9px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .mq-track{display:flex;gap:14px;width:max-content;will-change:transform}
 .marquee[data-dir="left"] .mq-track{animation:mqleft 22s linear infinite}
@@ -193,10 +201,14 @@ img{max-width:100%;display:block}a{color:inherit}
 @keyframes mqleft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes mqright{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .mq-track img{height:clamp(150px,20vw,210px);width:auto;display:block;border-radius:10px;border:1px solid var(--gold-2);background:#fff;flex:0 0 auto}
-@media(max-width:760px){.mq-track img{height:clamp(120px,34vw,160px)}}
+.marquee-big{margin:6px 0 30px;padding-bottom:30px;border-bottom:2px solid var(--gold-2)}
+.marquee-big .mq-track{animation-duration:40s}
+.marquee-big .mq-track img{height:clamp(250px,33vw,370px)}
+@media(max-width:760px){.mq-track img{height:clamp(120px,34vw,160px)}.marquee-big .mq-track img{height:clamp(200px,54vw,270px)}}
 /* === Schedule banner === */
 .mainline-band{background:linear-gradient(180deg,var(--wine),var(--wine-2));padding:30px 0;border-top:2px solid var(--gold-2);border-bottom:2px solid var(--gold-2)}
-.mainline-img{display:block;width:100%;max-width:900px;height:auto;margin:0 auto;border-radius:12px}
+.mainline-h{text-align:center;font-family:"Cinzel",serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-1);font-size:clamp(.8rem,2.4vw,1rem);margin:0 0 22px}
+.mainline-img{display:block;width:100%;max-width:1080px;height:auto;margin:0 auto;border-radius:12px}
 /* === Dates: image beside content === */
 .dcell{display:flex;align-items:center;gap:16px;text-align:left}
 .dcell-img{flex:0 0 auto;width:clamp(96px,32%,150px);aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--gold-2)}
@@ -306,7 +318,10 @@ img{max-width:100%;display:block}a{color:inherit}
 </div></section>
 
 <section class="section mainline-band">
-  <div class="wrap"><img class="mainline-img" src="Assets/main%20line%201.png" alt="मुख्य पदाधिकारी"></div>
+  <div class="wrap">
+    <h2 class="mainline-h">— मान्यवर · Patrons —</h2>
+    <img class="mainline-img" src="Assets/main%20line%201.png" alt="मान्यवर">
+  </div>
 </section>
 
 <section class="section people-band" id="committee"><div class="wrap">
@@ -316,10 +331,10 @@ img{max-width:100%;display:block}a{color:inherit}
     <img class="cf-img" src="Assets/Comete/Arif.png" alt="Arif Khan">
   </div>
   <div class="mgrid" id="members"></div>
-  <div class="patrons"><div class="sub-h">— मान्यवर · Patrons —</div><div class="pgrid" id="patrons"></div></div>
 </div></section>
 
 <section class="marquee-band" id="wishers">
+  <div class="marquee marquee-big" data-dir="left" id="mqBig"><div class="mq-track"></div></div>
   <div class="marquee" data-dir="left" id="mq1"><div class="mq-track"></div></div>
   <div class="marquee" data-dir="right" id="mq2"><div class="mq-track"></div></div>
   <div class="marquee" data-dir="left" id="mq3"><div class="mq-track"></div></div>
@@ -373,12 +388,14 @@ img{max-width:100%;display:block}a{color:inherit}
 </div></div></section>
 
 <footer class="foot"><div class="wrap">
-  <img class="foot-logo" src="Assets/logo.png" alt="Mr Print World">
   <div class="credit" id="footCredit"></div>
   <div class="copy" id="footCopy"></div>
   <div class="adminlink"><a href="admin.html">⚙ Admin</a></div>
 </div></footer>
 
+<a class="call-fab" id="callFab" href="tel:+919823893333" aria-label="Call +91 98238 93333">
+  <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+</a>
 <div class="lb" id="lb" onclick="this.classList.remove('on')"><span class="x">&times;</span><img id="lbimg" src="" alt=""></div>
 
 <script src="app-data.js"></script>
@@ -418,14 +435,13 @@ function render(){
   'इमरान पठान':'Assets/Comete/Imrann.png'
  };
  $('members').innerHTML=(DATA.committee||[]).map(m=>{const cut=COMETE[(m.name||'').trim()];return `<div class="mcard${cut?' cut':''}"><img src="${cut||m.photo}" alt="${esc(m.name)}"><div class="nm">${esc(m.name)}</div><div class="rl">${esc(m.role)}</div></div>`;}).join('');
- $('patrons').innerHTML=(DATA.patrons||[]).map(p=>`<div class="pcell"><div class="nm">${esc(p.name)}</div><div class="rl">${esc(p.role)}</div></div>`).join('');
  renderDonation();
  $('gallery').innerHTML=(DATA.gallery||[]).map(g=>`<figure class="gcell"><img src="${g.img}" onclick="openLB(this.src)" alt="${esc(g.caption)}"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('') || '<p class="placeholder" style="grid-column:1/-1">अभी तस्वीरें नहीं — admin से जोड़ें।</p>';
  const tp=DATA.tapify||{}; $('tName').textContent=tp.label||'Tapify';
  $('tapifyCta').href="https://wa.me/917841840840?text="+encodeURIComponent(tp.text||'Tapify se digital invite, QR aur NFC card banwana hai.');
  const f=DATA.footer||{};
- $('footCredit').innerHTML=`<div class="c">Printing By <b>${esc(f.printBy)}</b><br><a href="tel:${esc(f.printPhone)}">${esc(f.printPhone)}</a></div>
-   <div class="c partner">Digital Partner <b>${esc(tp.label||'Tapify')}</b></div>
+ $('footCredit').innerHTML=`<div class="c">Printing By<br><a href="https://www.printworldshop.com" target="_blank" rel="noopener"><img class="printworld-logo" src="Assets/printWorldShop.webp" alt="Print World Shop"></a><br><a href="tel:${esc(f.printPhone)}">${esc(f.printPhone)}</a></div>
+   <div class="c partner">Digital Partner<br><a href="https://tapify.co.in" target="_blank" rel="noopener"><img class="tapify-foot-logo" src="Assets/tapify-logo-green.png" alt="Tapify"></a></div>
    <div class="c">Committee <b>संपर्क</b><br>${(ev.contacts||[]).map(c=>`<a href="tel:${c}">${c}</a>`).join(' · ')}</div>`;
  $('footCopy').textContent=`${esc(h.org)} · ${esc(ev.address)} · 104th Salana Urs Mubarak 2026`;
 }
@@ -447,6 +463,17 @@ $('waShare').href="https://wa.me/?text="+encodeURIComponent("📿 104वां �
 function copyLink(){navigator.clipboard.writeText(pageUrl).then(()=>{const b=$('copyBtn');b.textContent="Copied ✓";setTimeout(()=>b.textContent="Copy Link",1600);});}
 function shareLink(){if(navigator.share)navigator.share({title:"Sandal-e-Taj · 104th Urs Mubarak 2026",text:"104वां सालाना उर्स मुबारक",url:pageUrl});else copyLink();}
 function makeQR(){var u=$('customUrl').value.trim()||pageUrl;var t=document.createElement('div');new QRCode(t,{text:u,width:600,height:600,colorDark:"#5a0b22",colorLight:"#ffffff"});setTimeout(()=>{var c=t.querySelector('canvas');var data=c?c.toDataURL("image/png"):t.querySelector('img').src;var a=$('dlqr');a.href=data;a.style.display="inline-block";a.textContent="⬇︎ QR Download (600px)";},300);}
+
+/* Floating call button — show after hero */
+(function(){
+ var fab=document.getElementById('callFab'); var hero=document.querySelector('.hero');
+ if(!fab||!hero) return;
+ if('IntersectionObserver' in window){
+   new IntersectionObserver(function(es){es.forEach(function(e){fab.classList.toggle('show',!e.isIntersecting);});},{threshold:0}).observe(hero);
+ } else {
+   window.addEventListener('scroll',function(){fab.classList.toggle('show',window.scrollY>window.innerHeight*0.7);});
+ }
+})();
 
 /* Gallery videos (YouTube + Shorts) */
 (function(){
@@ -471,6 +498,9 @@ function makeQR(){var u=$('customUrl').value.trim()||pageUrl;var t=document.crea
    var html=L.files.map(function(f){return '<img loading="lazy" alt="" src="'+encodeURI(base+L.folder+'/'+f)+'">';}).join('');
    track.innerHTML=html+html;
  });
+ var big=['Abid Sir.png','Bablu seth.png','Balu More.png','Farukh.png','Golu.png','Hafiz.png','Haji ir.png','Hanif Bhai.png','Nitin Dongre.png','Rahul jhade.png','firoz pathan.png','haji.png','kayyum.png','khalil taji.png','manoj bansod.png','manoj ghawande.png','mithun waghmare.png','mujib.png','sandeep.png','sanjay.png','suhas nanwatkar.png','sunil raut.png','tinku.png','vilas.png','yogesh Tiwari.png'];
+ var bEl=document.getElementById('mqBig');
+ if(bEl){var bt=bEl.querySelector('.mq-track');var bh=big.map(function(f){return '<img loading="lazy" alt="" src="'+encodeURI('Assets/Crousal Big size/'+f)+'">';}).join('');bt.innerHTML=bh+bh;}
 })();
 
 /* Dawat Nama scroll open/close — smooth height animation */
