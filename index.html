@@ -137,30 +137,66 @@ img{max-width:100%;display:block}a{color:inherit}
  .book-wrap img{margin:0 auto}.donate-qr,#qrbox{margin:0 auto}.share-actions{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* === Hero: video background + corner people + countdown === */
+.hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;padding:34px 0;background:#160410}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-veil{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 95% at 50% 38%,transparent 30%,rgba(18,3,11,.55) 80%),linear-gradient(180deg,rgba(18,3,11,.45),rgba(18,3,11,.12) 38%,rgba(18,3,11,.7))}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1080px;padding:0 20px;display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;justify-items:center}
+.person{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.person-img{width:clamp(110px,13vw,160px);aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid var(--gold);background:#fff;box-shadow:0 12px 34px -12px rgba(0,0,0,.75)}
+.person-patch{width:clamp(170px,16vw,250px);height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+.countdown-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.cd-badge{width:138px;height:138px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:"Cinzel",serif;text-transform:uppercase;letter-spacing:.14em;font-size:.9rem;font-weight:600;color:var(--gold-1);line-height:1.35;background:radial-gradient(circle at 50% 32%,var(--wine-3),var(--wine-2));border:3px solid var(--gold);box-shadow:0 0 0 6px rgba(201,162,75,.16),0 14px 32px -14px rgba(0,0,0,.7);animation:cdpulse 2.6s ease-in-out infinite}
+@keyframes cdpulse{0%,100%{box-shadow:0 0 0 6px rgba(201,162,75,.16),0 14px 32px -14px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 13px rgba(201,162,75,.04),0 16px 36px -12px rgba(0,0,0,.8)}}
+.cd-timer{display:flex;gap:10px}
+.cd-unit{min-width:66px;background:rgba(18,3,11,.55);border:1px solid var(--gold-2);border-radius:12px;padding:11px 8px;text-align:center;backdrop-filter:blur(4px)}
+.cd-num{display:block;font-family:"Cinzel",serif;font-weight:700;font-size:1.8rem;color:#fff;line-height:1}
+.cd-lab{display:block;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-1);margin-top:6px}
+.cd-date{font-family:"Amiri",serif;font-size:1.18rem;color:#fff;background:rgba(18,3,11,.5);border:1px solid var(--gold-2);padding:7px 20px;border-radius:999px}
+.cd-done{font-family:"Amiri",serif;font-size:1.5rem;color:var(--gold-1);text-align:center}
+.hero .hero-cta{margin-top:4px}
+@media(max-width:760px){
+ .hero{min-height:auto;padding:20px 0 28px}
+ .hero-inner{grid-template-columns:1fr 1fr;gap:14px}
+ .person-left{order:1}.person-right{order:2}
+ .countdown-wrap{order:3;grid-column:1/-1;margin-top:10px}
+ .cd-badge{width:120px;height:120px;font-size:.78rem}
+ .cd-timer{gap:7px}
+ .cd-unit{min-width:54px;padding:9px 6px}
+ .cd-num{font-size:1.4rem}
+ .cd-date{font-size:1.02rem}
+}
 </style>
 </head>
 <body>
 <div class="ribbon" id="ribbon"></div>
 
 <header class="hero">
-  <div class="hero-grid">
-    <div class="flank" id="leaderL"></div>
-    <div class="hero-center">
-      <div class="dome-frame"><img id="domeImg" alt="Dargah"></div>
-      <div class="seal"><svg viewBox="0 0 100 100" width="74" height="74"><circle cx="50" cy="50" r="46" fill="none" stroke="#c9a24b" stroke-width="2"/><circle cx="50" cy="50" r="40" fill="none" stroke="#e7c970" stroke-width="1" stroke-dasharray="2 4"/></svg><div class="num" id="ursNum">104</div></div>
-      <div class="eyebrow">Salana Urs-e-Pak · 2026</div>
-      <div class="titlehi" id="titleHi"></div>
-      <h1 class="bigtitle" id="brand"></h1>
-      <div class="subtitle" id="tagline"></div>
-      <div class="year-badge">साल · <b id="yearBig"></b> वां · <span id="yearLabel"></span></div>
-      <div class="org" id="org"></div>
-      <div class="hero-cta">
-        <a class="btn btn-gold" id="bookBtn" target="_blank">📖 Digital Book (PDF)</a>
-        <a class="btn btn-ghost" href="#donate">🤲 Donate</a>
-        <a class="btn btn-ghost" href="#share">Share / QR</a>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="Assets/Main_Screen.mp4" type="video/mp4">
+  </video>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <figure class="person person-left">
+      <img class="person-img" src="Assets/Comete/Chota%20Amjad.png" alt="Chota Amjad Khan">
+      <img class="person-patch" src="Assets/Comete/amjad%20name%20patcH.png" alt="छोटा अमजद खान">
+    </figure>
+
+    <div class="countdown-wrap">
+      <div class="cd-badge">Coming<br>Soon</div>
+      <div class="cd-timer" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-lab">दिन</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-lab">घंटे</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-lab">मिनट</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-lab">सेकंड</span></div>
       </div>
+      <div class="cd-date">सनीचर · 11 जुलाई 2026</div>
     </div>
-    <div class="flank" id="leaderR"></div>
+
+    <figure class="person person-right">
+      <img class="person-img" src="Assets/Comete/Arif.png" alt="Arif Khan">
+      <img class="person-patch" src="Assets/Comete/Arif%20Name%20Patch.png" alt="आरिफ खान">
+    </figure>
   </div>
 </header>
 
@@ -255,13 +291,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')$('lb').classList.re
 function render(){
  const h=DATA.hero||{};
  $('ribbon').innerHTML='شہنشاہِ ہفت اقلیم · <b>Hazrat Sayyed Mohammed Baba Tajuddin Auliya (R.A)</b> · Nagpur';
- $('domeImg').src=h.dome||''; $('ursNum').textContent=h.urs||'104';
- $('titleHi').textContent=h.titleHi||''; $('brand').textContent=h.brand||'Sandal-e-Taj';
- $('tagline').textContent=h.tagline||''; $('yearBig').textContent=h.yearBig||''; $('yearLabel').textContent=h.yearLabel||'';
- $('org').innerHTML=esc(h.org)+'<small>'+esc(h.orgSub)+'</small>';
  const L=DATA.leaders||[];
- const flank=(p)=>p?`<img class="av" src="${p.photo}" alt="${esc(p.name)}"><div class="nm">${esc(p.name)}</div><div class="rl">${esc(p.role)}</div><div class="sb">${esc(p.sub)}</div>`:'';
- $('leaderL').innerHTML=flank(L[0]); $('leaderR').innerHTML=flank(L[1]);
  const ev=DATA.event||{};
  $('dates').innerHTML=`<div class="dcell"><div class="k">Sandal Sharif ki Chadar</div><div class="v">${esc(ev.sandalDate)}</div><div class="d">${esc(ev.sandalTime)}</div></div>
   <div class="dcell green"><div class="k">लंगर महाप्रसाद</div><div class="v">${esc(ev.langarDates)}</div><div class="d">${esc(ev.langarTime)}</div></div>`;
@@ -275,7 +305,7 @@ function render(){
  $('members').innerHTML=(DATA.committee||[]).map(m=>`<div class="mcard"><img src="${m.photo}" alt="${esc(m.name)}"><div class="nm">${esc(m.name)}</div><div class="rl">${esc(m.role)}</div></div>`).join('');
  $('patrons').innerHTML=(DATA.patrons||[]).map(p=>`<div class="pcell"><div class="nm">${esc(p.name)}</div><div class="rl">${esc(p.role)}</div></div>`).join('');
  const bk=DATA.book||{}; $('bookCover').src=bk.cover||'';
- $('bookBtn').href=bk.pdf||'#'; $('bookBtn2').href=bk.pdf||'#';
+ $('bookBtn2').href=bk.pdf||'#';
  renderDonation();
  $('gallery').innerHTML=(DATA.gallery||[]).map(g=>`<figure class="gcell"><img src="${g.img}" onclick="openLB(this.src)" alt="${esc(g.caption)}"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('') || '<p class="placeholder" style="grid-column:1/-1">अभी तस्वीरें नहीं — admin से जोड़ें।</p>';
  const tp=DATA.tapify||{}; $('tName').textContent=tp.label||'Tapify';
@@ -310,6 +340,22 @@ $('waShare').href="https://wa.me/?text="+encodeURIComponent("📿 104वां �
 function copyLink(){navigator.clipboard.writeText(pageUrl).then(()=>{const b=$('copyBtn');b.textContent="Copied ✓";setTimeout(()=>b.textContent="Copy Link",1600);});}
 function shareLink(){if(navigator.share)navigator.share({title:"Sandal-e-Taj · 104th Urs Mubarak 2026",text:"104वां सालाना उर्स मुबारक",url:pageUrl});else copyLink();}
 function makeQR(){var u=$('customUrl').value.trim()||pageUrl;var t=document.createElement('div');new QRCode(t,{text:u,width:600,height:600,colorDark:"#5a0b22",colorLight:"#ffffff"});setTimeout(()=>{var c=t.querySelector('canvas');var data=c?c.toDataURL("image/png"):t.querySelector('img').src;var a=$('dlqr');a.href=data;a.style.display="inline-block";a.textContent="⬇︎ QR Download (600px)";},300);}
+
+/* Countdown to Sandal Sharif — Saturday 11 July 2026 (IST) */
+(function(){
+ var target=new Date('2026-07-11T00:00:00+05:30').getTime();
+ var pad=n=>(n<10?'0':'')+n;
+ function tick(){
+   var diff=target-Date.now();
+   if(diff<=0){var box=$('countdown'); if(box) box.innerHTML='<div class="cd-done">🌙 उर्स मुबारक — आ गया वो दिन!</div>'; return true;}
+   $('cd-days').textContent=pad(Math.floor(diff/864e5));
+   $('cd-hours').textContent=pad(Math.floor(diff%864e5/36e5));
+   $('cd-mins').textContent=pad(Math.floor(diff%36e5/6e4));
+   $('cd-secs').textContent=pad(Math.floor(diff%6e4/1e3));
+   return false;
+ }
+ if(!tick()){var t=setInterval(()=>{ if(tick()) clearInterval(t); },1000);}
+})();
 </script>
 </body>
 </html>
