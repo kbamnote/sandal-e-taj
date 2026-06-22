@@ -192,15 +192,18 @@ img{max-width:100%;display:block}a{color:inherit}
 .pdf-actions .btn-ghost:hover{background:rgba(90,11,34,.08)}
 @media(max-width:760px){.pdf-viewer iframe{height:72vh;min-height:420px}}
 /* === Well-wisher marquees === */
+.marquee-h{text-align:center;font-family:"Amiri",serif;font-weight:700;color:var(--gold-1);font-size:clamp(1.6rem,5vw,2.4rem);margin:0 0 24px}
+.marquee-h::after{content:"";display:block;width:70px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .marquee-band{padding:34px 0;background:linear-gradient(180deg,var(--wine-2),var(--wine));overflow:hidden}
 .marquee{overflow:hidden;width:100%;margin:9px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .mq-track{display:flex;gap:14px;width:max-content;will-change:transform}
 .marquee[data-dir="left"] .mq-track{animation:mqleft 22s linear infinite}
 .marquee[data-dir="right"] .mq-track{animation:mqright 22s linear infinite}
-.marquee:hover .mq-track{animation-play-state:paused}
+.marquee{cursor:pointer}
+.marquee.paused .mq-track{animation-play-state:paused}
 @keyframes mqleft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes mqright{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.mq-track img{height:clamp(150px,20vw,210px);width:auto;display:block;border-radius:10px;border:1px solid var(--gold-2);background:#fff;flex:0 0 auto}
+.mq-track img{height:clamp(150px,20vw,210px);width:auto;display:block;background:none;border:0;border-radius:0;flex:0 0 auto}
 .marquee-big{margin:6px 0 30px;padding-bottom:30px;border-bottom:2px solid var(--gold-2)}
 .marquee-big .mq-track{animation-duration:40s}
 .marquee-big .mq-track img{height:clamp(250px,33vw,370px)}
@@ -334,6 +337,7 @@ img{max-width:100%;display:block}a{color:inherit}
 </div></section>
 
 <section class="marquee-band" id="wishers">
+  <h2 class="marquee-h">सहायोजक</h2>
   <div class="marquee marquee-big" data-dir="left" id="mqBig"><div class="mq-track"></div></div>
   <div class="marquee" data-dir="left" id="mq1"><div class="mq-track"></div></div>
   <div class="marquee" data-dir="right" id="mq2"><div class="mq-track"></div></div>
@@ -501,6 +505,7 @@ function makeQR(){var u=$('customUrl').value.trim()||pageUrl;var t=document.crea
  var big=['Abid Sir.png','Bablu seth.png','Balu More.png','Farukh.png','Golu.png','Hafiz.png','Haji ir.png','Hanif Bhai.png','Nitin Dongre.png','Rahul jhade.png','firoz pathan.png','haji.png','kayyum.png','khalil taji.png','manoj bansod.png','manoj ghawande.png','mithun waghmare.png','mujib.png','sandeep.png','sanjay.png','suhas nanwatkar.png','sunil raut.png','tinku.png','vilas.png','yogesh Tiwari.png'];
  var bEl=document.getElementById('mqBig');
  if(bEl){var bt=bEl.querySelector('.mq-track');var bh=big.map(function(f){return '<img loading="lazy" alt="" src="'+encodeURI('Assets/Crousal Big size/'+f)+'">';}).join('');bt.innerHTML=bh+bh;}
+ document.querySelectorAll('.marquee').forEach(function(m){m.addEventListener('click',function(){m.classList.toggle('paused');});});
 })();
 
 /* Dawat Nama scroll open/close — smooth height animation */
